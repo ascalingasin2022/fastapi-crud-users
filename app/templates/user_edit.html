@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Edit User</h1>
+
+    <form method="post" action="/users/{{ user.id }}/edit" class="user-form">
+        <label for="name">Name</label>
+        <input id="name" name="name" value="{{ user.name }}" placeholder="Name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" value="{{ user.email }}" placeholder="Email" required>
+
+        <button type="submit" class="btn update-btn">Update User</button>
+        <a href="/users" class="btn cancel-btn">Cancel</a>
+    </form>
+</div>
+{% endblock %}
