@@ -7,9 +7,12 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     pass
 
+class UserUpdate(UserBase):
+    pass  # <- Add this
+
 class User(UserBase):
     id: int
     is_active: bool
 
     class Config:
-        orm_mode = True
+        orm_mode = True  # In Pydantic v2, you can also use `from_attributes = True`
