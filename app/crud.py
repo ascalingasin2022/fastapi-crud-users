@@ -19,3 +19,5 @@ def delete_user(db: Session, user_id: int):
     if user:
         db.delete(user)
         db.commit()
+
+# hello
