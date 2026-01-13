@@ -1,18 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-
     <div class="container">
         <h1>Users</h1>
-        <ul>
-            {% for user in users %}
-            <li>
-                {{ user.name }} - {{ user.email }}
-                <a href="/users/{{ user.id }}/edit">Edit</a>
-                <a href="/users/{{ user.id }}/delete">Delete</a>
-            </li>
-            {% endfor %}
-        </ul>
-        <a href="/users/new">Add User</a>
-    </div>
 
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <a class="btn edit-btn" href="/users/{{ user.id }}/edit">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="btn add-btn" href="/users/new">Add User</a>
+    </div>
 {% endblock %}

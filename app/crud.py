@@ -15,12 +15,13 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 def update_user(db: Session, user_id: int, user_update: schemas.UserUpdate):
-    user = get_user(db, user_id)
-    if user:
-        user.name = user_update.name
-        user.email = user_update.email
-        db.commit()
-        db.refresh(user)
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        return None
+    user.name = user_update.name
+    user.email = user_update.email
+    db.commit()
+    db.refresh(user)
     return user
 
 def delete_user(db: Session, user_id: int):
